@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { WalletConnect } from "@/components/WalletConnect";
 import { useCounter_SignGuestbook } from "@/generated/hooks";
 import { stringAsciiCV } from '@stacks/transactions';
 
@@ -28,7 +27,6 @@ export default function Home() {
             <h1 className="text-2xl font-bold">Onchain Guestbook</h1>
           </div>
 
-          <WalletConnect />
         </header>
 
         <h2 className="mb-3 text-4xl font-bold">
@@ -64,7 +62,7 @@ export default function Home() {
 
           {guestbook.error && (
             <p className="mt-4 text-sm text-red-400">
-              {guestbook.error.message}
+              {JSON.stringify(guestbook.error)}
             </p>
           )}
         </div>
