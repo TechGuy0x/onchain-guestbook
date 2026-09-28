@@ -4,19 +4,56 @@ import { Cl } from "@stacks/transactions";
 const accounts = simnet.getAccounts();
 const deployer = accounts.get("deployer")!;
 
-describe("counter", () => {
-  it("increments", () => {
-    const { result } = simnet.callPublicFn("counter", "increment", [], deployer);
-    expect(result).toBeOk(Cl.uint(1));
+describe("Onchain Guestbook", () => {
+  it("signs a guestbook message", () => {
+    const result = simnet.callPublicFn(
+      "counter",
+      "sign-guestbook",
+      [Cl.stringAscii("Hello from Stacks!")],
+      deployer
+    );
+
+    expect(result.result).toBeOk(Cl.uint(1));
   });
-  it("get-count returns current value", () => {
-    simnet.callPublicFn("counter", "increment", [], deployer);
-    const { result } = simnet.callReadOnlyFn("counter", "get-count", [], deployer);
-    expect(result).toBeOk(Cl.uint(1));
+
+  it("stores the message", () => {
+    simnet.callPublicFn(
+      "counter",
+      "sign-guestbook",
+      [Cl.stringAscii("Hello from Stacks!")],
+      deployer
+    );
+
+    const result = simnet.callReadOnlyFn(
+      "counter",
+      "get-message",
+      [Cl.uint(1)],
+      deployer
+    );
+
+    expect(result.result).toBeSome(
+      Cl.tuple({
+        sender: Cl.principal(deployer),
+        message: Cl.stringAscii("Hello from Stacks!"),
+      })
+    );
   });
-  it("decrement", () => {
-    simnet.callPublicFn("counter", "increment", [], deployer);
-    const { result } = simnet.callPublicFn("counter", "decrement", [], deployer);
-    expect(result).toBeOk(Cl.uint(0));
+
+  it("tracks the message count", () => {
+    simnet.callPublicFn(
+      "counter",
+      "sign-guestbook",
+      [Cl.stringAscii("First message")],
+      deployer
+    );
+
+    const result = simnet.callReadOnlyFn(
+      "counter",
+      "get-message-count",
+      [],
+      deployer
+    );
+
+    expect(result.result).toBeOk(Cl.uint(1));
   });
 });

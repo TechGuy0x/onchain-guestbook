@@ -1,22 +1,28 @@
-;; counter.clar scaffolded by scaffold-stacks
+;; Onchain Guestbook
+;; Stores short messages permanently on the Stacks blockchain.
 
-(define-data-var counter uint u0)
+(define-data-var message-count uint u0)
 
-(define-read-only (get-count)
-  (ok (var-get counter)))
+(define-map messages
+  { id: uint }
+  { sender: principal, message: (string-ascii 160) }
+)
 
-(define-public (increment)
-  (begin
-    (var-set counter (+ (var-get counter) u1))
-    (ok (var-get counter))))
+(define-read-only (get-message-count)
+  (ok (var-get message-count))
+)
 
-(define-public (decrement)
-  (begin
-    (asserts! (> (var-get counter) u0) (err u1))
-    (var-set counter (- (var-get counter) u1))
-    (ok (var-get counter))))
+(define-read-only (get-message (id uint))
+  (map-get? messages { id: id })
+)
 
-(define-public (reset)
-  (begin
-    (var-set counter u0)
-    (ok u0)))
+(define-public (sign-guestbook (message (string-ascii 160)))
+  (let ((id (+ (var-get message-count) u1)))
+    (map-set messages
+      { id: id }
+      { sender: tx-sender, message: message }
+    )
+    (var-set message-count id)
+    (ok id)
+  )
+)

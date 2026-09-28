@@ -1,0 +1,11 @@
+{
+  "network": "testnet",
+  "deployed_at": "2026-09-28T02:43:44.892436702+00:00",
+  "contracts": {
+    "counter": {
+      "contract_id": "STRPA8S7TE60TE92RMEDEZ088XATE14ZYVAMFNNS.counter",
+      "tx_id": "0x896d968e65670ea52efc36177c4a827d76e01d97ed7a09b8fdc872fc5670857b",
+      "block_height": 0
+    }
+  }
+}
