@@ -22,3 +22,4 @@ frontend/out/
 # OS
 .DS_Store
 *.pem
+contracts/settings/Testnet.toml
