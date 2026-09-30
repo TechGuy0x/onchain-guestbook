@@ -1,14 +1,14 @@
-#Onchain Guestbook
+# Onchain Guestbook
 
 A simple onchain guestbook built on Stacks using Scaffold Stacks and Clarity.
 
 Users can connect an Xverse wallet, write a short message, and publish it directly to the Stacks Testnet.
 
-🚀 Live Demo
+# 🚀 Live Demo
 
 https://onchain-guestbook-snowy.vercel.app/
 
-🔗 Project Links
+# 🔗 Project Links
 
 - GitHub: https://github.com/Techguy0x/onchain-guestbook
 - Live App: https://onchain-guestbook-snowy.vercel.app/
@@ -16,7 +16,7 @@ https://onchain-guestbook-snowy.vercel.app/
 - Contract Deployment: https://explorer.hiro.so/txid/896d968e65670ea52efc36177c4a827d76e01d97ed7a09b8fdc872fc5670857b?chain=testnet
 - Guestbook Transaction: https://explorer.hiro.so/txid/6da1f38e5664ebd6df1e557d6d5497b5bdb9695a2d9d095daabac0558e6c58f6?chain=testnet
 
-✨ Features
+# ✨ Features
 
 - Connect an Xverse wallet
 - Write a short guestbook message
@@ -26,7 +26,7 @@ https://onchain-guestbook-snowy.vercel.app/
 - Read individual guestbook messages
 - Stacks Testnet support
 
-🛠️ Built With
+# 🛠️ Built With
 
 - Stacks
 - Clarity
@@ -36,7 +36,7 @@ https://onchain-guestbook-snowy.vercel.app/
 - Xverse
 - Vercel
 
-📜 Smart Contract
+# 📜 Smart Contract
 
 The guestbook uses a Clarity smart contract with three main functions:
 
@@ -58,7 +58,7 @@ Each message stores:
 - The sender's Stacks address
 - The guestbook message
 
-🧪 Testing
+# 🧪 Testing
 
 The smart contract includes tests covering:
 
@@ -68,7 +68,7 @@ The smart contract includes tests covering:
 
 The contract was tested locally before deployment to Stacks Testnet.
 
-💻 Local Development
+# 💻 Local Development
 
 Clone the repository:
 
@@ -89,7 +89,7 @@ The development server will be available at:
 
 http://localhost:3000
 
-🧾 Contract Development
+# 🧾 Contract Development
 
 The Clarity contract is located at:
 
@@ -101,7 +101,7 @@ Contract tests are located at:
 
 contracts/tests/counter.test.ts
 
-🌐 Deployment
+# 🌐 Deployment
 
 The contract is deployed to Stacks Testnet.
 
@@ -111,7 +111,7 @@ The frontend is deployed on Vercel and configured to interact with the Stacks Te
 
 This project was built as part of the Scaffold Stacks developer challenge.
 
-What Worked
+# What Worked
 
 - Scaffold Stacks made the initial contract and frontend setup straightforward.
 - The Clarity contract deployed successfully.
@@ -119,7 +119,7 @@ What Worked
 - A real contract interaction was completed on Stacks Testnet.
 - The frontend was successfully deployed to Vercel.
 
-What Didn't
+# What Didn't
 
 I encountered a few setup and frontend issues during development:
 
